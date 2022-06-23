@@ -26,7 +26,8 @@ const addFlight = (req, res) => {
         flight.time = time;
         flight.price = price;
         flight.date = date;
-        flight.id = flights.length
+        if(flights.length) flight.id = flights[flights.length-1]["id"]+1
+        else flight.id = 0
     }
     else{
         return res.status(400).json({ msg: "Insufficient data"})
